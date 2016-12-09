@@ -56,7 +56,6 @@ defmodule TwitStat do
   def common_friends_graph(user1, user2) do
     _common_friends(user1, user2)
       |> create_graph
-      #|> Graph.save("#{user1}_#{user2}.dot")
   end
 
   def create_graph(users) do

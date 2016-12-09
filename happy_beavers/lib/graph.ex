@@ -18,17 +18,19 @@ defmodule TwitStat.Graph do
 
     IO.binwrite file, "graph G {\n"
 
-    users = Enum.reduce(graph.nodes, %{}, fn {id,name}, acc -> Map.put(acc, id, name) end)
+    users =
+      graph.nodes
+      |> Enum.reduce(%{}, fn %{id: id, name: name}, acc -> Map.put(acc, id, name) end)
 
     graph.nodes
-    |> Enum.each((fn {id, name} -> IO.binwrite file, "  #{name}\n" end))
+    |> Enum.each(fn %{id: id, name: name} -> IO.binwrite file, "  #{name}\n" end)
 
     graph.edges
     |> Enum.each((fn [h1 | [h2|_]] ->
       user1 = Map.get(users, h1)
       user2 = Map.get(users, h2)
       IO.binwrite file, "  #{user1} -- #{user2}\n"
-     end))
+    end))
 
     IO.binwrite file, "}"
     File.close file

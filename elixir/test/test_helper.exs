@@ -1,2 +1,2 @@
 ExUnit.start()
-TwitStat.Twitter.init()
+#TwitStat.Twitter.init()

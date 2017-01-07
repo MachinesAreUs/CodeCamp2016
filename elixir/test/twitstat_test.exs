@@ -25,9 +25,9 @@ defmodule TwitStatTest do
     real_g = TwitStat.common_friends_graph("tuitabeaver", "hip_beaver")
 
     expected_g = %TwitStat.Graph{
-      nodes: [{14120299, "MachinesAreUs"},
-              {84340970, "metallikito"},
-              {2597177828, "silmood"}],
+      nodes: [%{id: 14120299, name: "MachinesAreUs"},
+              %{id: 84340970, name: "metallikito"},
+              %{id: 2597177828, name: "silmood"}],
       edges: [[14120299, 84340970],
               [14120299, 2597177828],
               [84340970, 2597177828]]}
